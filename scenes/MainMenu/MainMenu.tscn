@@ -1,0 +1,92 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4srgbwc3rfay"]
+
+[ext_resource type="PackedScene" uid="uid://djm1ib71kn8bq" path="res://scenes/Tools/InputBar.tscn" id="1_iwhpq"]
+[ext_resource type="Script" path="res://scenes/MainMenu/MainMenu.gd" id="1_s7135"]
+[ext_resource type="PackedScene" uid="uid://da20ajosv5mq0" path="res://scenes/MainMenu/LoadGameMenu.tscn" id="2_mstmp"]
+[ext_resource type="PackedScene" uid="uid://cq6whniticog7" path="res://scenes/MainMenu/SettingsMenu.tscn" id="2_ohatl"]
+[ext_resource type="PackedScene" uid="uid://jq20jacg67ob" path="res://scenes/Tools/ConfirmDialog.tscn" id="5_1kee3"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s7135")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 120
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 120
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Spacer1" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ContinueButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Continue"
+
+[node name="NewGameButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "New Game"
+
+[node name="LoadGameButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Load"
+
+[node name="Spacer2" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SettingsButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit to Desktop"
+
+[node name="Spacer3" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LoadGameMenu" parent="." instance=ExtResource("2_mstmp")]
+visible = false
+layout_mode = 1
+
+[node name="SettingsMenu" parent="." instance=ExtResource("2_ohatl")]
+visible = false
+layout_mode = 1
+
+[node name="InputBar" parent="." instance=ExtResource("1_iwhpq")]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+offset_top = 0.0
+grow_vertical = 0
+
+[node name="ConfirmDialog" parent="." instance=ExtResource("5_1kee3")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/LoadGameButton" to="." method="_on_load_game_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="exit_menu" from="LoadGameMenu" to="." method="_on_load_game_menu_exit_menu"]
+[connection signal="exit_menu" from="SettingsMenu" to="." method="_on_settings_menu_exit_menu"]
+[connection signal="decision" from="ConfirmDialog" to="." method="_on_confirm_dialog_decision"]

@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://c4jywo8b7e7ue"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sy6ko"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_udfh5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_juh8m"]
+bg_color = Color(0, 0, 0, 0.196078)
+
+[resource]
+LineEdit/styles/focus = SubResource("StyleBoxEmpty_sy6ko")
+LineEdit/styles/normal = SubResource("StyleBoxEmpty_udfh5")
+MarginContainer/constants/margin_left = 7
+MarginContainer/constants/margin_right = 7
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_juh8m")

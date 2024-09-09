@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://djm1ib71kn8bq"]
+
+[ext_resource type="Theme" uid="uid://c4jywo8b7e7ue" path="res://themes/CommandLineTheme.tres" id="1_72rvg"]
+[ext_resource type="Script" path="res://scenes/Tools/InputBar.gd" id="2_5pr8j"]
+
+[node name="InputBar" type="Control" node_paths=PackedStringArray("lineEdit")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 625.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_72rvg")
+script = ExtResource("2_5pr8j")
+lineEdit = NodePath("PanelContainer/MarginContainer/HBoxContainer/LineEdit")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_72rvg")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+text = ">:"
+
+[node name="LineEdit" type="LineEdit" parent="PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+context_menu_enabled = false
+flat = true
+caret_blink = true
+
+[connection signal="gui_input" from="PanelContainer/MarginContainer/HBoxContainer/LineEdit" to="." method="_on_line_edit_gui_input"]
+[connection signal="text_submitted" from="PanelContainer/MarginContainer/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]

@@ -1,0 +1,19 @@
+{
+	"key": "third_demo_scene",
+	"image": "demo3.jpg",
+	"story_start": "1",
+	"type": "fulltext",
+	"story": {
+		"1": {
+			"text": ["text1"],
+			"move_scene": "firstscene"
+		}
+	},
+	"locale": {
+		"cs_CZ": {
+			"translations": { 
+				"text1": "Takto vypada cela textova scena s obrazkem v pozadi"
+			}
+		}
+	}
+}
