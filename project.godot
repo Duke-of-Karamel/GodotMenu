@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="TextBasedGame"
+config/name="NewProject"
 run/main_scene="res://scenes/MainMenu/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
@@ -21,11 +21,9 @@ SaveLoadManager="*res://scripts/SaveLoadManager.gd"
 SceneManager="*res://scripts/SceneManager.gd"
 InputLineManager="*res://scripts/InputLineManager.gd"
 FileManager="*res://scripts/FileManager.gd"
-StoryLoader="*res://scripts/StoryLoader.gd"
 
 [editor]
 
-version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
 
 [rendering]

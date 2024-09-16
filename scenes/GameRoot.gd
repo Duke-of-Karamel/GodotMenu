@@ -1,18 +1,13 @@
 extends Node
 
-var halfhalf_scene: PackedScene = load("res://scenes/SceneTypes/half_half_scene.tscn")
-var halftext_scene: PackedScene = load("res://scenes/SceneTypes/half_text_scene.tscn")
-var fulltext_scene: PackedScene = load("res://scenes/SceneTypes/full_text_scene.tscn")
-
 static var scenes: Dictionary = {} # <PackedScene>
 static var unloaded_scenes: Dictionary = {} #<SceneSaveData>
 static var current_scene_key: String = ''
 static var current_scene: Node = null
 
 func _ready():
-	var scene_data = StoryLoader.load_story()
-	for key in scene_data.keys():
-		scenes[key] = _construct_scene_from_data(scene_data[key])
+	scenes = {}
+	#TODO: load scenes
 
 func _save_scene(key):
 	var scene_data: SceneSaveData = SceneSaveData.new()
@@ -50,15 +45,3 @@ func change_scene(key):
 	
 func new_game():
 	_load_scene('firstscene') #TODO: make something better
-
-func _construct_scene_from_data(scene_data: SceneData) -> PackedScene:
-	var scene: PackedScene
-	match scene_data.type:
-		"halfhalf":
-			scene = halfhalf_scene.duplicate(true)
-		"halftext":
-			scene = halftext_scene.duplicate(true)
-		"fulltext":
-			scene = fulltext_scene.duplicate(true)
-	scene.setup(scene_data)
-	return scene
